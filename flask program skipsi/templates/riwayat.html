@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+
+
+
+<body>
+    <header>
+        <h1>hasil pengambilan keputusan</h1>
+    </header>
+    <div class="container">
+        <h1></h1>
+        <table border="1px" >
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>ROC</th>
+                    <th>Price Today</th>
+                    <th>Price Start</th>
+                    <th>grafik</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in lulus %}
+                <tr>
+                    <td>{{ result.kode_saham }}</td>
+                    <td>{{ result.roc }}</td>
+                    <td>{{ result.roc }}</td>
+                    <td>{{ result.harga_hari_ini }}</td>
+                    <td>{{ result.harga_awal }}</td>
+                    <td><a href="{{ result.link_saham }}" target="_blank">Grafik</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p>Total results: {{ total }}</p>
+        <a href="{{ url_for('dashboard') }}" class="button3">Kembali</a>
+    </div>
+</body>
+</html>

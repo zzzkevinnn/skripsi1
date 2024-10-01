@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Stock List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        
+        <div class="container">
+            <h1>Edit Saham</h1>
+        </div>
+    </header>
+    <h1></h1>
+    <form method="POST" class="container">
+        <label for="new_stock">Tambah saham:</label>
+        <input type="text" id="new_stock" name="new_stock" placeholder="Enter stock symbol">
+        <div class="flex">
+            <button  type="submit">Tambah</button>
+            <a href="{{ url_for('dashboard') }}" class="button2">kembali</a>
+        </div>
+        
+
+        <h2>Saham saat ini:</h2>
+        <ul>
+            {% for stock in stocks %}
+            <li>{{ stock }}
+                <input type="hidden" name="delete_stock" value="{{ stock }}">
+                <button class="button1" type="submit">Delete</button>
+            </li>
+            {% endfor %}
+        </ul>
+    </form>
+    
+</body>
+</html>
